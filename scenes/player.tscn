@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb25i0nxoqxbv"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_27332"]
+[ext_resource type="PackedScene" uid="uid://c5hvsxk6k4wp" path="res://art/player.glb" id="2_256ax"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u7ndp"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_27332")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character" parent="Pivot" instance=ExtResource("2_256ax")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_u7ndp")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dncg7lvlq3c2a"]
+
+[ext_resource type="PackedScene" uid="uid://cb25i0nxoqxbv" path="res://scenes/player.tscn" id="1_0ppuw"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ph7i3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wvb70"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_ph7i3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_wvb70")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_0ppuw")]
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, -5.95416e-16, 2.4663e-16, 2.4663e-16, 0.707107, 0.707107, -5.95416e-16, -0.707107, 0.707107, 2.08165e-12, 8, 19)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 7.97189e-23, -7.97189e-23, -7.45583e-23, 1, -6.71794e-08, 2.16187e-23, -7.57478e-09, 1, 6.3042e-15, 7.07108, -8.48529)
